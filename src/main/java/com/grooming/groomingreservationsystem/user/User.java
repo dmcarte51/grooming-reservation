@@ -10,17 +10,21 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User {
     @Id
-    @Column(name = "usernames")
+    @Column(name = "usernames", columnDefinition = "varchar(15)")
     String userName;
-    @Column(name = "passwords")
+    @Column(name = "passwords", columnDefinition = "varchar(30)")
     String password;
+
+    @Column(name = "emails", columnDefinition = "varchar(50)")
+    String email;
 
     public User(){
 
     }
-    public User(String userName, String password) {
+    public User(String userName, String password, String email) {
         this.userName = userName;
         this.password = password;
+        this.email = email;
     }
 
     public String getUserName() {
@@ -37,5 +41,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
